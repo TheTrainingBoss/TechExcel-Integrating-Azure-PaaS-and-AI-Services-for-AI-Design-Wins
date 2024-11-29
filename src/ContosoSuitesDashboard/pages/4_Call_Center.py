@@ -60,6 +60,7 @@ def create_transcription_request(audio_file, speech_recognition_language="en-US"
     # TODO: stop continuous transcription on either session stopped or canceled events
     transcriber.session_stopped.connect(stop_cb)
     transcriber.canceled.connect(stop_cb)
+    transcriber.start_transcribing_async()
     # TODO: remove this placeholder code and perform the actual transcription
     # all_results = ['This is a test.', 'Fill in with real transcription.']
     
@@ -69,7 +70,7 @@ def create_transcription_request(audio_file, speech_recognition_language="en-US"
     stream.close()
     while not done:
         time.sleep(.5)
-    transcriber.start_transcribing_async()
+    transcriber.stop_transcribing_async()
 
     return all_results
 
