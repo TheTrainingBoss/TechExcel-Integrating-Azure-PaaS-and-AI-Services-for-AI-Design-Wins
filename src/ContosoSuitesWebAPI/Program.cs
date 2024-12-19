@@ -162,7 +162,6 @@ app.MapPost("/VectorSearch", async ([FromBody] float[] queryVector, [FromService
     // Exercise 3 Task 3 TODO #3: Insert code to call the ExecuteVectorSearch function on the Vectorization Service. Don't forget to remove the NotImplementedException.
     var results = await vectorizationService.ExecuteVectorSearch(queryVector, max_results, minimum_similarity_score);
     return results;
-
 })
     .WithName("VectorSearch")
     .WithOpenApi();
